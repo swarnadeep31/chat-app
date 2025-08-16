@@ -1,13 +1,14 @@
-import React, { use, useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SettingsPage from "./pages/SettingsPage";
 import SignUpPage from "./pages/SignUppage";
 import LogInPage from "./pages/loginPage";
 import ProfilePage from "./pages/profilePage";
 import HomePage from "./pages/homePage";
-import { useAuthStore } from "./store/useAuthStore";
+
 import { Loader } from "lucide-react";
+import { useAuthStore } from "./store/useAuthStore";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -34,7 +35,7 @@ const App = () => {
         />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage /> : <Naviagte to="/" />}
+          element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
         />
         <Route
           path="/login"
